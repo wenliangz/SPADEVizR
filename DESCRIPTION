@@ -29,7 +29,7 @@ Imports:
     plyr,
     randomForestSRC,
 	reshape2,
-	survival
+	survival,
 	RColorBrewer
 LazyData: true
 Suggests:
