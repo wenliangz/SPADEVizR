@@ -724,7 +724,7 @@ treeViewer <- function(Results,
 
         max.mean.expr <- ceiling(max(mean.expr, na.rm = TRUE))
         min.mean.expr <- floor(min(mean.expr,na.rm = TRUE))
-        seq.mean.expr <- seq(from = -1, to = max.mean.expr, by = 1)
+        seq.mean.expr <- seq(from = min.mean.expr, to = max.mean.expr, by = 1)
 
     }   
     
