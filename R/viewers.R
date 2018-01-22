@@ -748,7 +748,7 @@ treeViewer <- function(Results,
                                                ggplot2::aes_string(x = "x", y = "y", size = "size", fill = marker, colour = highlight.name),
                                                stroke = 2.5,
                                                shape = 21) +
-                           ggplot2::scale_fill_gradient(colours = hm.palette(100), limits = c(min.mean.expr, max.mean.expr), breaks = seq.mean.expr)
+                           ggplot2::scale_fill_gradientn(colours = hm.palette(100), limits = c(min.mean.expr, max.mean.expr), breaks = seq.mean.expr)
         }else{
             plot <- plot + ggplot2::geom_point(data   = pos.vertex,
                                                ggplot2::aes_string(x = "x", y = "y", size = "size", colour = highlight.name),
@@ -762,7 +762,7 @@ treeViewer <- function(Results,
                                                ggplot2::aes_string(x = "x", y = "y", size = "size", fill = marker),
                                                stroke = 2.5,
                                                shape  = 21) +
-                           ggplot2::scale_fill_gradient(colours = hm.palette(100), limits = c(min.mean.expr, max.mean.expr), breaks = seq.mean.expr) 
+                           ggplot2::scale_fill_gradientn(colours = hm.palette(100), limits = c(min.mean.expr, max.mean.expr), breaks = seq.mean.expr) 
         } else {
             plot <- plot + ggplot2::geom_point(data   = pos.vertex,
                                                ggplot2::aes_string(x = "x", y = "y", size = "size"),
