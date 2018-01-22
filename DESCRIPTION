@@ -30,6 +30,7 @@ Imports:
     randomForestSRC,
 	reshape2,
 	survival
+	RColorBrewer
 LazyData: true
 Suggests:
     knitr

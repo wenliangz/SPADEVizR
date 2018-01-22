@@ -723,6 +723,7 @@ treeViewer <- function(Results,
         colnames(pos.vertex)[ncol(pos.vertex)] <- marker
 
         max.mean.expr <- ceiling(max(mean.expr, na.rm = TRUE))
+        min.mean.expr <- round(min(mean.expr.na.rm = TRUE))
         seq.mean.expr <- seq(from = -1, to = max.mean.expr, by = 1)
 
     }   
@@ -734,6 +735,7 @@ treeViewer <- function(Results,
                            yend = Results@graph.layout[edges[, 2], 2])
     
     cells.number <- sum(colSums(data))
+    hm.palette <- colorRampPalette(rev(brewer.pal(11, 'Spectral')), space='Lab')
     
     plot <- ggplot2::ggplot() +
             ggplot2::ggtitle(paste("Tree Viewer (", format( cells.number, big.mark = " "), " cells)", sep = "")) +
@@ -746,7 +748,7 @@ treeViewer <- function(Results,
                                                ggplot2::aes_string(x = "x", y = "y", size = "size", fill = marker, colour = highlight.name),
                                                stroke = 2.5,
                                                shape = 21) +
-                           ggplot2::scale_fill_gradient(low = "#ECE822", high = "#EE302D", limits = c(-1, max.mean.expr), breaks = seq.mean.expr)
+                           ggplot2::scale_fill_gradient(colours = hm.palette(100), limits = c(min.mean.expr, max.mean.expr), breaks = seq.mean.expr)
         }else{
             plot <- plot + ggplot2::geom_point(data   = pos.vertex,
                                                ggplot2::aes_string(x = "x", y = "y", size = "size", colour = highlight.name),
@@ -760,7 +762,7 @@ treeViewer <- function(Results,
                                                ggplot2::aes_string(x = "x", y = "y", size = "size", fill = marker),
                                                stroke = 2.5,
                                                shape  = 21) +
-                           ggplot2::scale_fill_gradient(low = "#ECE822", high = "#EE302D", limits = c(-1, max.mean.expr), breaks = seq.mean.expr) 
+                           ggplot2::scale_fill_gradient(colours = hm.palette(100), limits = c(min.mean.expr, max.mean.expr), breaks = seq.mean.expr) 
         } else {
             plot <- plot + ggplot2::geom_point(data   = pos.vertex,
                                                ggplot2::aes_string(x = "x", y = "y", size = "size"),
