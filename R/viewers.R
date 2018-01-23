@@ -654,7 +654,7 @@ countViewer <- function(Results,
 #'
 #' @export
 #'
-#' @import reshape2 ggplot2 grid igraph
+#' @import reshape2 ggplot2 grid igraph RColorBrewer
 treeViewer <- function(Results,
                        samples        = NULL,
                        highlight      = NULL,
