@@ -794,7 +794,7 @@ treeViewer <- function(Results,
                                                  size          = 4,
                                                  color         = "black",
                                                  box.padding   = grid::unit(0.1, "lines"),
-                                                 point.padding = grid::unit(0.1, "lines")) +
+                                                 point.padding = grid::unit(0.1, "lines")) 
     }
     if (show.on_device) {
         plot(plot)
