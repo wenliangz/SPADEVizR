@@ -659,7 +659,8 @@ treeViewer <- function(Results,
                        samples        = NULL,
                        highlight      = NULL,
                        marker         = NULL,
-                       show.on_device = TRUE) {
+                       show.on_device = TRUE,
+                       show.labels    = TRUE) {
 
     if (is.null(Results)) {
         stop("Error in treeViewer: 'Results' parameter can not be NULL")
@@ -773,12 +774,6 @@ treeViewer <- function(Results,
     }
     plot <- plot + ggplot2::scale_color_manual(values = c("black", "blue")) +
                    ggplot2::scale_size_area(name = "# of cells", max_size = 15) +
-                   ggrepel::geom_label_repel(data          = pos.vertex, 
-                                             ggplot2::aes_string(x = "x", y = "y", label = "id"),
-                                             size          = 4,
-                                             color         = "black",
-                                             box.padding   = grid::unit(0.1, "lines"),
-                                             point.padding = grid::unit(0.1, "lines")) +
                    ggplot2::coord_fixed() +
                    ggplot2::theme(panel.background = ggplot2::element_blank(),
                                   panel.border     = ggplot2::element_blank(),
@@ -793,6 +788,14 @@ treeViewer <- function(Results,
                                   legend.key       = ggplot2::element_blank(),
 								  plot.title=ggplot2::element_text(hjust=0.5))
 
+    if (show.labels) {
+        plot <- plot + ggrepel::geom_label_repel(data          = pos.vertex, 
+                                                 ggplot2::aes_string(x = "x", y = "y", label = "id"),
+                                                 size          = 4,
+                                                 color         = "black",
+                                                 box.padding   = grid::unit(0.1, "lines"),
+                                                 point.padding = grid::unit(0.1, "lines")) +
+    }
     if (show.on_device) {
         plot(plot)
     }
