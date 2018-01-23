@@ -726,6 +726,8 @@ treeViewer <- function(Results,
         max.mean.expr <- ceiling(max(mean.expr, na.rm = TRUE))
         min.mean.expr <- floor(min(mean.expr,na.rm = TRUE))
         seq.mean.expr <- seq(from = min.mean.expr, to = max.mean.expr, by = 1)
+        y.min <- min(pos.vertex$y) - 100
+        y.max <- max(pos.vertex$y) + 100
 
     }   
     
@@ -740,7 +742,8 @@ treeViewer <- function(Results,
     
     plot <- ggplot2::ggplot() +
             ggplot2::ggtitle(paste("Tree Viewer (", format( cells.number, big.mark = " "), " cells)", sep = "")) +
-            ggplot2::geom_segment(data = pos.edge, ggplot2::aes_string(x = "x", xend = "xend", y = "y", yend = "yend"))
+            ggplot2::geom_segment(data = pos.edge, ggplot2::aes_string(x = "x", xend = "xend", y = "y", yend = "yend")) +
+            ggplot2::ylim(y.min,y.max)
     
     if (!is.null(highlight)) {
         pos.vertex[, highlight.name] <- highlight@results$significant
